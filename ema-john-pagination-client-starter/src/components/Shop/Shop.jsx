@@ -72,6 +72,12 @@ const Shop = () => {
         setCart([]);
         deleteShoppingCart();
     }
+    const [perPage,setPerPage] = useState(10)
+
+    const handleDropDown = e =>{
+        console.log(parseInt(e.target.value));
+        setPerPage(parseInt(e.target.value))
+    }
 
     return (
         <div className='shop-container'>
@@ -94,10 +100,16 @@ const Shop = () => {
                     </Link>
                 </Cart>
             </div>
-            <div>
+            <div className='pagination'>
                 {
                     pages.map(page=><button key={page}>{page +1}</button>)
                 }
+                <select className='' name="dropdown" value={perPage} id="" onChange={handleDropDown}>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
             </div>
         </div>
     );
